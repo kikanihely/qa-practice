@@ -33,5 +33,9 @@ test("Dropdown and Datepicker", async ({page}) => {
     await page.getByLabel("Total Seats").fill('1000')
     await page.locator("#add-event-btn").click();
 
+    //Dynamic dropdown
+    await page.getByRole("link",{name: "Events"}).first().click();
+    
+
 
 })
