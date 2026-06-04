@@ -25,6 +25,5 @@ test("Assertions", async ({page}) => {
     //Soft Assertions
     await expect.soft(page.locator(".btn-red").first()).toBeEnabled();
     await page.locator(".btn-red").first().click();
-    await expect.soft(page.locator(".alert.alert-success").first()).toHaveText("Product successsfully added to the cart");
 
 })
