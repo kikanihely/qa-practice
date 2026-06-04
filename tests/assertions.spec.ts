@@ -1,7 +1,10 @@
-import {test, expect} from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
-test("Assertions", async ({page}) => {
-    await page.goto("https://www.bookswagon.com/")
+test("Assertions", async ({ page }) => {
+    await page.goto("https://www.bookswagon.com/", {
+        waitUntil: "domcontentloaded",
+        timeout: 60000
+    });
 
     //Verify Page URl and Title
     await expect(page).toHaveURL("https://www.bookswagon.com/");
@@ -10,7 +13,7 @@ test("Assertions", async ({page}) => {
     //Verify element visibility
     await expect(page.locator("#ctl00_imglogo")).toBeVisible();
     await expect(page.locator("#ctl00_hdnAddedMeta")).toBeHidden();
-    
+
     //Verify Text element
     await expect(page.locator(".tagline-main")).toContainText("Let's")
     await expect(page.locator("#ctl00_lblUser")).toHaveText("Bibiliophile");
@@ -21,7 +24,8 @@ test("Assertions", async ({page}) => {
     await expect(page.locator("#inputbar")).toBeEnabled();
     await expect(page.locator("#inputbar")).toBeEditable();
     await page.keyboard.press("Enter");
-
+    await page.waitForLoadState("networkidle");
+    
     //Soft Assertions
     await expect.soft(page.locator(".btn-red").first()).toBeEnabled();
     await page.locator(".btn-red").first().click();
