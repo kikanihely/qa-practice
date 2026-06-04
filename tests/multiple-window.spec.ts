@@ -2,8 +2,8 @@ import {test} from '@playwright/test';
 
 test("Multiple Windows", async ({page}) => {
     await page.goto("https://www.fabindia.com/")
-    await page.getByAltText("Men Kurtas").first().click();
-
+    // await page.getByAltText("Men Kurtas").nth(1).click();
+    await page.locator('img[alt="Men Kurtas"][loading="lazy"]').first().click();
     const page1Promise= page.waitForEvent("popup");
     await page.getByRole("img", {name: "Grey Cotton Stripe Short Kurta"}).click();
     const page1 = await page1Promise;
