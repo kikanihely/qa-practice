@@ -1,33 +1,27 @@
 import { test, expect } from '@playwright/test';
 
 test("Assertions", async ({ page }) => {
-    await page.goto("https://www.bookswagon.com/", {
-        waitUntil: "domcontentloaded",
-        timeout: 60000
-    });
+    await page.goto("https://www.snapdeal.com/");
 
     //Verify Page URl and Title
-    await expect(page).toHaveURL("https://www.bookswagon.com/");
-    await expect(page).toHaveTitle("Buy Books Online | India's Largest Online Bookstore | BooksWagon");
+    await expect(page).toHaveURL("https://www.snapdeal.com/");
+    await expect(page).toHaveTitle("Shop Online for Men, Women & Kids Clothing, Shoes, Home Decor Items");
 
     //Verify element visibility
-    await expect(page.locator("#ctl00_imglogo")).toBeVisible();
-    await expect(page.locator("#ctl00_hdnAddedMeta")).toBeHidden();
+    await expect(page.locator(".HeaderStyle__HeaderLeftContent-sc-dc90d7cb-2.bEskku")).toBeVisible();
 
     //Verify Text element
-    await expect(page.locator(".tagline-main")).toContainText("Let's")
-    await expect(page.locator("#ctl00_lblUser")).toHaveText("Bibiliophile");
-    await page.locator("#inputbar").fill("Harry Potter");
-    await expect(page.locator("#inputbar")).toHaveValue("Harry Potter");
+    await expect(page.locator(".HeaderStyle__SearchPlaceHolderTextsContainer-sc-dc90d7cb-9.cSsXLY")).toHaveText("Search for Brands & Products");
+    await page.locator("#search-box-input").fill("Harry Potter");
+    await expect(page.locator("#search-box-input")).toHaveValue("Harry Potter");
 
     //Verify element state
-    await expect(page.locator("#inputbar")).toBeEnabled();
-    await expect(page.locator("#inputbar")).toBeEditable();
+    await expect(page.locator("#search-box-input")).toBeEnabled();
+    await expect(page.locator("#search-box-input")).toBeEditable();
     await page.keyboard.press("Enter");
     await page.waitForLoadState("networkidle");
-    
+
     //Soft Assertions
-    await expect.soft(page.locator(".btn-red").first()).toBeEnabled();
-    await page.locator(".btn-red").first().click();
+    await expect.soft(page).toHaveURL("https://www.snapdeal.com/search?clickSrc=top_searches&keyword=Harry%20Potter&categoryId=0&vertical=p&noOfResults=20&SRPID=topsearch&sort=rlvncy");
 
 })
