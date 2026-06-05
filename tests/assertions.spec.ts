@@ -1,27 +1,29 @@
 import { test, expect } from '@playwright/test';
 
 test("Assertions", async ({ page }) => {
-    await page.goto("https://www.snapdeal.com/");
+    await page.goto("https://eventhub.rahulshettyacademy.com");
 
     //Verify Page URl and Title
-    await expect(page).toHaveURL("https://www.snapdeal.com/");
-    await expect(page).toHaveTitle("Shop Online for Men, Women & Kids Clothing, Shoes, Home Decor Items");
+    await expect(page).toHaveURL("https://eventhub.rahulshettyacademy.com/login");
+    await expect(page).toHaveTitle("EventHub — Discover & Book Events");
 
     //Verify element visibility
-    await expect(page.locator(".HeaderStyle__HeaderLeftContent-sc-dc90d7cb-2.bEskku")).toBeVisible();
+    await expect(page.getByAltText("EventHub app preview")).toBeVisible();
 
     //Verify Text element
-    await expect(page.locator(".HeaderStyle__SearchPlaceHolderTextsContainer-sc-dc90d7cb-9.cSsXLY")).toHaveText("Search for Brands & Products");
-    await page.locator("#search-box-input").fill("Harry Potter");
-    await expect(page.locator("#search-box-input")).toHaveValue("Harry Potter");
+    await page.locator("#email").fill("hely@gmail.com");
+    await expect(page.locator("#email")).toHaveValue("hely@gmail.com");
 
     //Verify element state
-    await expect(page.locator("#search-box-input")).toBeEnabled();
-    await expect(page.locator("#search-box-input")).toBeEditable();
+    await expect(page.locator("#password")).toBeEnabled();
+    await expect(page.locator("#password")).toBeEditable();
+    await page.keyboard.press("Tab");
+    await page.keyboard.type("Hely@3014");
     await page.keyboard.press("Enter");
+    await page.locator(".leading-snug").first().click()
     await page.waitForLoadState("networkidle");
 
     //Soft Assertions
-    await expect.soft(page).toHaveURL("https://www.snapdeal.com/search?clickSrc=top_searches&keyword=Harry%20Potter&categoryId=0&vertical=p&noOfResults=20&SRPID=topsearch&sort=rlvncy");
+    await expect.soft(page).toHaveURL("https://eventhub.rahulshettyacademy.com/events/3");
 
 })
