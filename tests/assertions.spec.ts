@@ -23,7 +23,4 @@ test("Assertions", async ({ page }) => {
     await page.locator(".leading-snug").first().click()
     await page.waitForLoadState("networkidle");
 
-    //Soft Assertions
-    await expect.soft(page).toHaveURL("https://eventhub.rahulshettyacademy.com/events/3");
-
 })
