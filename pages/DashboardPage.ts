@@ -12,12 +12,12 @@ export class DashboardPage {
     pimLocator: Locator;
 
     constructor(public page: Page) {
-        this.timeAtWorkLocator = this.page.locator(".oxd-sheet").nth(1);
-        this.myActionsLocator = this.page.locator(".oxd-sheet").nth(2);
-        this.quickLaunchLocator = this.page.locator(".oxd-sheet").nth(3);
-        this.buzzLatestPostsLocator = this.page.locator(".oxd-sheet").nth(4);
-        this.empOnLeaveLocator = this.page.locator(".oxd-sheet").nth(5);
-        this.empDistrBySubLocator = this.page.locator(".oxd-sheet").nth(6);
+        this.timeAtWorkLocator = this.page.locator(".oxd-sheet").nth(0);
+        this.myActionsLocator = this.page.locator(".oxd-sheet").nth(1);
+        this.quickLaunchLocator = this.page.locator(".oxd-sheet").nth(2);
+        this.buzzLatestPostsLocator = this.page.locator(".oxd-sheet").nth(3);
+        this.empOnLeaveLocator = this.page.locator(".oxd-sheet").nth(4);
+        this.empDistrBySubLocator = this.page.locator(".oxd-sheet").nth(5);
         this.empDistrByLocLocator = this.page.locator(".oxd-sheet").last();
         this.pimLocator = this.page.getByRole("link", {name: "PIM"});
     }
