@@ -14,6 +14,7 @@ test("Add Employee Flow", async ({page}) => {
     await dashboardPage.verifyDashboardPageElements();
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
-    await employeeAddPage.fillEmployeeDetails("Hely", "Nileshbhai", "Kikani");
-    await employeeAddPage.fillLoginDetails("hely.kikani", "Hely@3014");
+    await employeeAddPage.fillEmployeeDetails("demoo", "Nileshbhai", "demoo", "demoo2o");
+    await employeeAddPage.fillLoginDetails("demo2.kikani", "Hely@3014");
+    await employeeAddPage.validatePage();
 })
