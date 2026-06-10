@@ -40,7 +40,7 @@ export class EmployeeDetailPage {
         await this.page.getByRole('option', { name: maritalStatus }).click()
     }
 
-    async selectGender(gender: 'Male' | 'Female'){
+    async selectGender(gender: "Male" | "Female"){
         if(gender === 'Male')
         {
            await this.page.locator('label').filter({ hasText: 'Male' }).click()

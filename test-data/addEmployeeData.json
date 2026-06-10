@@ -1,0 +1,86 @@
+{
+    "admin": {
+        "username": "Admin",
+        "password": "admin123"
+    },
+    "employee": {
+        "firstName": [
+            "Priya",
+            "Arjun",
+            "Priya",
+            "Nikhil",
+            "Sneha"
+        ],
+        "middleName": [
+            "Karan",
+            "Vikram",
+            "",
+            "Rajesh",
+            "Amit"
+        ],
+        "lastName": [
+            "Mehta",
+            "Shah",
+            "Desai",
+            "Patel",
+            "Joshi"
+        ],
+        "employeeId": [
+            "priya001",
+            "arjun002",
+            "priya003",
+            "nikhil004",
+            "sneha005"
+        ],
+        "username": [
+            "priya.mehta",
+            "arjun.shah",
+            "priya.desai",
+            "nikhil.patel",
+            "sneha.joshi"
+        ],
+        "password": [
+            "Priya@3014",
+            "Arjun@5678",
+            "Priya@9012",
+            "Nikhil@3456",
+            "Sneha@7890"
+        ],
+        "driverLicenseNumber": [
+            "GJ01-2023-987654",
+            "GJ02-2022-112233",
+            "GJ03-2021-445566",
+            "GJ04-2020-778899",
+            "GJ05-2023-334455"
+        ],
+        "licenseExpiryDate": [
+            "2028-06-15",
+            "2027-08-20",
+            "2029-01-10",
+            "2026-12-31",
+            "2030-05-25"
+        ],
+        "nationality": [
+            "Indian",
+            "Indian",
+            "Indian",
+            "Indian",
+            "Indian"
+        ],
+        "maritalStatus": [
+            "Single",
+            "Married",
+            "Single",
+            "Married",
+            "Single"
+        ],
+        "gender": [
+            "Female",
+            "Male",
+            "Female",
+            "Male",
+            "Female"
+        ]     
+        
+    }
+}

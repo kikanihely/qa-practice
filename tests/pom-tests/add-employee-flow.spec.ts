@@ -4,7 +4,7 @@ import {DashboardPage} from '../../pages/DashboardPage';
 import { EmployeeListPage } from '../../pages/EmplyeeListPage';
 import { AddEmployeePage } from '../../pages/AddEmployeePage';
 import { EmployeeDetailPage } from '../../pages/EmployeeDetailPage';
-
+import data from '../../test-data/addEmployeeData.json'
 
 
 test("Add Employee Flow", async ({page}) => {
@@ -14,18 +14,18 @@ test("Add Employee Flow", async ({page}) => {
     const employeeAddPage = new AddEmployeePage(page);
     const employeeDetailPage = new EmployeeDetailPage(page);
     await loginPage.navigateToHomePage();
-    await loginPage.login("Admin", "admin123");
+    await loginPage.login(data.admin.username, data.admin.password);
     await dashboardPage.verifyDashboardPageElements();
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
-    await employeeAddPage.fillEmployeeDetails("demoo", "Nileshbhai", "demoo", "demoo14o");
-    await employeeAddPage.fillLoginDetails("demo14.kikani", "Hely@3014");
+    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[0], data.employee.middleName[0], data.employee.lastName[0], data.employee.employeeId[0]);
+    await employeeAddPage.fillLoginDetails(data.employee.username[0], data.employee.password[0]);
     await employeeAddPage.validatePage();
-    await employeeDetailPage.fillDriverLicense('GJ01-2023-987654')
-    await employeeDetailPage.fillExpiryDate('2028-06-15')
-    await employeeDetailPage.selectNationality('Indian')
-    await employeeDetailPage.selectMaritalStatus('Single')
-    await employeeDetailPage.selectGender('Female')
+    await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[0])
+    await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[0])
+    await employeeDetailPage.selectNationality(data.employee.nationality[0])
+    await employeeDetailPage.selectMaritalStatus(data.employee.maritalStatus[0])
+    await employeeDetailPage.selectGender(data.employee.gender[0] as 'Male' | 'Female')
     await employeeListPage.searchEmployee("demoo")
 
 })
