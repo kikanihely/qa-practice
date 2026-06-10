@@ -43,11 +43,11 @@ export class EmployeeDetailPage {
     async selectGender(gender: "Male" | "Female"){
         if(gender === 'Male')
         {
-           await this.page.locator('label').filter({ hasText: 'Male' }).click()
+           await this.page.locator('label').filter({ hasText: /^Male$/}).click()
         }
         else
         {
-            await this.page.locator('label').filter({ hasText: 'Female' }).click()
+            await this.page.locator('label').filter({ hasText: /^Female$/ }).click()
         }
     }
 

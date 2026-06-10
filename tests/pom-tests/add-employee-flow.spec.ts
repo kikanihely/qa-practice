@@ -18,14 +18,14 @@ test("Add Employee Flow", async ({page}) => {
     await dashboardPage.verifyDashboardPageElements();
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
-    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[1], data.employee.middleName[1], data.employee.lastName[1], data.employee.employeeId[1]);
-    await employeeAddPage.fillLoginDetails(data.employee.username[1], data.employee.password[1]);
+    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[2], data.employee.middleName[2], data.employee.lastName[2], data.employee.employeeId[2]);
+    await employeeAddPage.fillLoginDetails(data.employee.username[2], data.employee.password[2]);
     // await employeeAddPage.validatePage();
-    await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[1])
-    await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[1])
-    await employeeDetailPage.selectNationality(data.employee.nationality[1])
-    await employeeDetailPage.selectMaritalStatus(data.employee.maritalStatus[1])
-    await employeeDetailPage.selectGender(data.employee.gender[1] as 'Male' | 'Female')
+    await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[2])
+    await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[2])
+    await employeeDetailPage.selectNationality(data.employee.nationality[2])
+    await employeeDetailPage.selectMaritalStatus(data.employee.maritalStatus[2])
+    await employeeDetailPage.selectGender(data.employee.gender[2] as 'Male' | 'Female')
     await employeeListPage.searchEmployee("demoo")
 
 })
