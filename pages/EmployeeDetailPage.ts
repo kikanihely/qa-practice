@@ -31,7 +31,7 @@ export class EmployeeDetailPage {
     async selectNationality(nationality: string)
     {
         await this.nationalityLocator.click();
-        await this.page.getByRole('option', { name: nationality }).click()
+        await this.page.getByRole('option', { name: nationality , exact: true}).click()
     }
 
     async selectMaritalStatus(maritalStatus: string)
