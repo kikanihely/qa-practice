@@ -18,13 +18,14 @@ test("Add Employee Flow", async ({page}) => {
     await dashboardPage.verifyDashboardPageElements();
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
-    await employeeAddPage.fillEmployeeDetails("demoo", "Nileshbhai", "demoo", "demoo9o");
-    await employeeAddPage.fillLoginDetails("demo9.kikani", "Hely@3014");
+    await employeeAddPage.fillEmployeeDetails("demoo", "Nileshbhai", "demoo", "demoo14o");
+    await employeeAddPage.fillLoginDetails("demo14.kikani", "Hely@3014");
     await employeeAddPage.validatePage();
     await employeeDetailPage.fillDriverLicense('GJ01-2023-987654')
     await employeeDetailPage.fillExpiryDate('2028-06-15')
-    await employeeDetailPage.selectNationality('India')
+    await employeeDetailPage.selectNationality('Indian')
     await employeeDetailPage.selectMaritalStatus('Single')
     await employeeDetailPage.selectGender('Female')
+    await employeeListPage.searchEmployee("demoo")
 
 })

@@ -5,8 +5,8 @@ export class EmployeeDetailPage {
     licenseDateLocator: Locator
     nationalityLocator: Locator
     maritalStatusIconLocator: Locator
-    maritalStatusLocator: Locator
     saveLocator: Locator
+    
 
     constructor(public page:Page)
     {
@@ -14,8 +14,8 @@ export class EmployeeDetailPage {
         this.licenseDateLocator = this.page.getByPlaceholder('yyyy-dd-mm').first()
         this.nationalityLocator = this.page.locator('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow').first()
         this.maritalStatusIconLocator = this.page.locator('div:nth-child(2) > .oxd-input-group > div:nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon')
-        this.maritalStatusLocator = this.page.getByRole('option', { name: 'Married' })
         this.saveLocator = this.page.getByRole('button', { name: 'Save' })
+        
     }
 
     async fillDriverLicense (licenseNumber:string)
@@ -50,4 +50,9 @@ export class EmployeeDetailPage {
             await this.page.locator('label').filter({ hasText: 'Female' }).click()
         }
     }
+
+    async saveDetails() {
+        await this.saveLocator.click();
+    }
+
 }
