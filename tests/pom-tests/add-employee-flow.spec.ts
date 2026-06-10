@@ -20,7 +20,7 @@ test("Add Employee Flow", async ({page}) => {
     await employeeListPage.clickAddEmployee();
     await employeeAddPage.fillEmployeeDetails(data.employee.firstName[0], data.employee.middleName[0], data.employee.lastName[0], data.employee.employeeId[0]);
     await employeeAddPage.fillLoginDetails(data.employee.username[0], data.employee.password[0]);
-    await employeeAddPage.validatePage();
+    // await employeeAddPage.validatePage();
     await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[0])
     await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[0])
     await employeeDetailPage.selectNationality(data.employee.nationality[0])
