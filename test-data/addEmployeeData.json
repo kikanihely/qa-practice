@@ -5,60 +5,60 @@
     },
     "employee": {
         "firstName": [
-            "Harsh",
-            "Diya",
-            "Vivaan",
-            "Anjali",
-            "Karan"
+            "Naman",
+            "Bhavna",
+            "Jay",
+            "Ritika",
+            "Dhruv"
         ],
         "middleName": [
+            "Ashok",
             "",
-            "Nilesh",
-            "Ramesh",
-            "",
-            "Mahesh"
+            "Sanjay",
+            "Kishan",
+            ""
         ],
         "lastName": [
-            "Parmar",
-            "Joshi",
-            "Raval",
-            "Modi",
-            "Gohil"
+            "Bhavsar",
+            "Sheth",
+            "Vasava",
+            "Oza",
+            "Pandit"
         ],
         "employeeId": [
-            "harsh301",
-            "diya302",
-            "vivaan303",
-            "anjali304",
-            "karan305"
+            "naman401",
+            "bhavna402",
+            "jay403",
+            "ritika404",
+            "dhruv405"
         ],
         "username": [
-            "harsh.parmar",
-            "diya.joshi",
-            "vivaan.raval",
-            "anjali.modi",
-            "karan.gohil"
+            "naman.bhavsar",
+            "bhavna.sheth",
+            "jay.vasava",
+            "ritika.oza",
+            "dhruv.pandit"
         ],
         "password": [
-            "Harsh@6712",
-            "Diya@8823",
-            "Vivaan@9934",
-            "Anjali@1045",
-            "Karan@2156"
+            "Naman@7261",
+            "Bhavna@8372",
+            "Jay@9483",
+            "Ritika@1594",
+            "Dhruv@2605"
         ],
         "driverLicenseNumber": [
-            "GJ16-2024-611122",
-            "GJ17-2023-722233",
-            "GJ18-2022-833344",
-            "GJ19-2021-944455",
-            "GJ20-2024-055566"
+            "GJ21-2024-161718",
+            "GJ22-2023-272829",
+            "GJ23-2022-383940",
+            "GJ24-2021-495051",
+            "GJ25-2024-506162"
         ],
         "licenseExpiryDate": [
-            "2031-12-01",
-            "2028-04-19",
-            "2030-09-23",
-            "2027-02-28",
-            "2032-06-15"
+            "2031-04-09",
+            "2028-08-22",
+            "2030-12-03",
+            "2027-06-17",
+            "2032-10-28"
         ],
         "nationality": [
             "Indian",
@@ -68,11 +68,11 @@
             "Indian"
         ],
         "maritalStatus": [
-            "Single",
             "Married",
             "Single",
             "Married",
-            "Single"
+            "Single",
+            "Married"
         ],
         "gender": [
             "Male",

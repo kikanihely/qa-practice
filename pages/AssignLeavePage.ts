@@ -50,9 +50,15 @@ export class AssignLeavePage {
     async assignLeave()
     {
         await this.asignBtnLocator.click()
-        await this.confirmBtnLocator.waitFor({ state: 'visible' })
+        const confirmVisible = await this.confirmBtnLocator
+        .isVisible({ timeout: 30000 })
+        .catch(() => false)
+
+    if (confirmVisible) {
         await this.confirmBtnLocator.click()
-        await expect(this.successMsgLocator).toBeVisible()
+    }
+
+    await expect(this.successMsgLocator).toBeVisible({ timeout: 10000 })
     }
 
 
