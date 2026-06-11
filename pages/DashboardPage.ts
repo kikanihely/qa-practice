@@ -10,6 +10,7 @@ export class DashboardPage {
     empDistrBySubLocator: Locator;
     empDistrByLocLocator: Locator;
     pimLocator: Locator;
+    assignLeaveLocator: Locator;
 
     constructor(public page: Page) {
         this.timeAtWorkLocator = this.page.locator(".oxd-sheet").nth(0);
@@ -20,6 +21,11 @@ export class DashboardPage {
         this.empDistrBySubLocator = this.page.locator(".oxd-sheet").nth(5);
         this.empDistrByLocLocator = this.page.locator(".oxd-sheet").last();
         this.pimLocator = this.page.getByRole("link", {name: "PIM"});
+        this.assignLeaveLocator = this.page.getByRole('button', { name: 'Assign Leave' });
+    }
+
+    async gotoDashboard() {
+        await this.page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
     }
 
     async verifyDashboardPageElements() {
@@ -35,6 +41,11 @@ export class DashboardPage {
     async goToPIM() {
         await this.pimLocator.click();
         await expect(this.page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList");
+    }
+
+    async goToAssignLeavePage () {
+        await this.assignLeaveLocator.click();
+        await expect(this.page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/leave/assignLeave")
     }
 
 }

@@ -11,7 +11,7 @@ export class EmployeeDetailPage {
     constructor(public page:Page)
     {
         this.driverLicenseLocator = this.page.locator('div:nth-child(3) > div:nth-child(2) > div > .oxd-input-group > div:nth-child(2) > .oxd-input')
-        this.licenseDateLocator = this.page.getByPlaceholder('yyyy-dd-mm').first()
+        this.licenseDateLocator = this.page.getByPlaceholder('mm-yyyy-dd').first()
         this.nationalityLocator = this.page.locator('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow').first()
         this.maritalStatusIconLocator = this.page.locator('div:nth-child(2) > .oxd-input-group > div:nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon')
         this.saveLocator = this.page.getByRole('button', { name: 'Save' })

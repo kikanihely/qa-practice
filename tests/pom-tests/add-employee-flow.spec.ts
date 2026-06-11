@@ -1,20 +1,24 @@
 import {test} from '@playwright/test';
-import {LoginPage} from '../../pages/LoginPage';
 import {DashboardPage} from '../../pages/DashboardPage';
 import { EmployeeListPage } from '../../pages/EmplyeeListPage';
 import { AddEmployeePage } from '../../pages/AddEmployeePage';
 import { EmployeeDetailPage } from '../../pages/EmployeeDetailPage';
 import data from '../../test-data/addEmployeeData.json'
+// import { LoginPage } from '../../pages/LoginPage';
 
+// test("Authenticate user", async ({page}) => {
+//     const loginPage = new LoginPage(page);
+//     await loginPage.navigateToHomePage();
+//     await loginPage.login(data.admin.username, data.admin.password);
+//     await page.context().storageState({path: "test-data/auth.json"})
+// })
 
 test("Add Employee Flow", async ({page}) => {
-    const loginPage = new LoginPage(page);
     const dashboardPage = new DashboardPage(page);
     const employeeListPage = new EmployeeListPage(page);
     const employeeAddPage = new AddEmployeePage(page);
     const employeeDetailPage = new EmployeeDetailPage(page);
-    await loginPage.navigateToHomePage();
-    await loginPage.login(data.admin.username, data.admin.password);
+    await dashboardPage.gotoDashboard()
     await dashboardPage.verifyDashboardPageElements();
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
