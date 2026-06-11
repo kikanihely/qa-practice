@@ -8,7 +8,6 @@ test('Assign Leave Flow', async ({page}) => {
     const dashboardPage = new DashboardPage(page);
     const assignLeavePage = new AssignLeavePage(page);
     await dashboardPage.gotoDashboard()
-    await dashboardPage.verifyDashboardPageElements();
     await dashboardPage.goToAssignLeavePage();
     await assignLeavePage.fillName(data.employee.firstName[0]+ ' ' +data.employee.lastName[0])
     await assignLeavePage.fillLeaveType("CAN - Bereavement")

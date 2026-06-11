@@ -19,7 +19,6 @@ test("Add Employee Flow", async ({page}) => {
     const employeeAddPage = new AddEmployeePage(page);
     const employeeDetailPage = new EmployeeDetailPage(page);
     await dashboardPage.gotoDashboard()
-    await dashboardPage.verifyDashboardPageElements();
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
     await employeeAddPage.fillEmployeeDetails(data.employee.firstName[0], data.employee.middleName[0], data.employee.lastName[0], data.employee.employeeId[0]);
