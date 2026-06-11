@@ -11,7 +11,7 @@ test('Assign Leave Flow', async ({page}) => {
     await dashboardPage.goToAssignLeavePage();
     await assignLeavePage.fillName(data.employee.firstName[0]+ ' ' +data.employee.lastName[0])
     await assignLeavePage.fillLeaveType("CAN - Bereavement")
-    await assignLeavePage.fillDate("2026-10-06","2026-22-06")
+    await assignLeavePage.fillDate("0016-11-06","1016-11-06")
     await assignLeavePage.fillComments("Sick Leave")
     await assignLeavePage.assignLeave()
 

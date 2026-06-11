@@ -6,5 +6,6 @@ test("Authenticate user", async ({page}) => {
     const loginPage = new LoginPage(page);
     await loginPage.navigateToHomePage();
     await loginPage.login(data.admin.username, data.admin.password);
+    await page.waitForURL('**/dashboard/index')
     await page.context().storageState({path: "test-data/auth.json"})
 })
