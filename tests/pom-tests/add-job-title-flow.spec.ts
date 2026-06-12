@@ -14,8 +14,8 @@ test("Ass Job Title", async({page}) => {
     await dashboardPage.goToAdminPage();
     await adminPage.goToJobTitle();
     await jobListPage.goToAddJob();
-    await addJobTitlePage.fillJobDetails(data.job[2].title,data.job[2].description,data.job[2].note);
+    await addJobTitlePage.fillJobDetails(data.job[3].title,data.job[3].description,data.job[3].note);
     await addJobTitlePage.saveDetails();
-    await jobListPage.verifyJob(data.job[2].title);
+    await jobListPage.verifyJob(data.job[3].title);
 
 })
