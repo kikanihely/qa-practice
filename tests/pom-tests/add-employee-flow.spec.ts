@@ -1,17 +1,9 @@
 import {test} from '@playwright/test';
 import {DashboardPage} from '../../pages/DashboardPage';
-import { EmployeeListPage } from '../../pages/EmplyeeListPage';
+import { EmployeeListPage } from '../../pages/EmployeeListPage';
 import { AddEmployeePage } from '../../pages/AddEmployeePage';
 import { EmployeeDetailPage } from '../../pages/EmployeeDetailPage';
 import data from '../../test-data/addEmployeeData.json'
-// import { LoginPage } from '../../pages/LoginPage';
-
-// test("Authenticate user", async ({page}) => {
-//     const loginPage = new LoginPage(page);
-//     await loginPage.navigateToHomePage();
-//     await loginPage.login(data.admin.username, data.admin.password);
-//     await page.context().storageState({path: "test-data/auth.json"})
-// })
 
 test("Add Employee Flow", async ({page}) => {
     const dashboardPage = new DashboardPage(page);
@@ -21,18 +13,16 @@ test("Add Employee Flow", async ({page}) => {
     await dashboardPage.gotoDashboard()
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
-    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[3], data.employee.middleName[3], data.employee.lastName[3], data.employee.employeeId[3]);
-    await employeeAddPage.fillLoginDetails(data.employee.username[3], data.employee.password[3]);
-    // await employeeAddPage.validatePage();
-    // await page.waitForURL('**/pim/viewPersonalDetails/empNumber/**')
-    await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[3])
-    await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[3])
-    await employeeDetailPage.selectNationality(data.employee.nationality[3])
-    await employeeDetailPage.selectMaritalStatus(data.employee.maritalStatus[3])
-    await employeeDetailPage.selectGender(data.employee.gender[3] as 'Male' | 'Female')
+    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[3], data.employee.middleName[4], data.employee.lastName[4], data.employee.employeeId[4]);
+    await employeeAddPage.fillLoginDetails(data.employee.username[4], data.employee.password[4]);
+    await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[4])
+    await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[4])
+    await employeeDetailPage.selectNationality(data.employee.nationality[4])
+    await employeeDetailPage.selectMaritalStatus(data.employee.maritalStatus[4])
+    await employeeDetailPage.selectGender(data.employee.gender[4] as 'Male' | 'Female')
     await employeeDetailPage.saveDetails()
     await page.waitForLoadState('networkidle')
     await dashboardPage.goToPIM()
-    await employeeListPage.searchEmployee(data.employee.firstName[3])
+    await employeeListPage.searchEmployee(data.employee.firstName[4])
 
 })
