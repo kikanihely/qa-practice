@@ -21,18 +21,18 @@ test("Add Employee Flow", async ({page}) => {
     await dashboardPage.gotoDashboard()
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
-    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[4], data.employee.middleName[4], data.employee.lastName[4], data.employee.employeeId[4]);
-    await employeeAddPage.fillLoginDetails(data.employee.username[4], data.employee.password[4]);
+    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[0], data.employee.middleName[0], data.employee.lastName[0], data.employee.employeeId[0]);
+    await employeeAddPage.fillLoginDetails(data.employee.username[0], data.employee.password[0]);
     // await employeeAddPage.validatePage();
     // await page.waitForURL('**/pim/viewPersonalDetails/empNumber/**')
-    await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[4])
-    await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[4])
-    await employeeDetailPage.selectNationality(data.employee.nationality[4])
-    await employeeDetailPage.selectMaritalStatus(data.employee.maritalStatus[4])
-    await employeeDetailPage.selectGender(data.employee.gender[4] as 'Male' | 'Female')
+    await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[0])
+    await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[0])
+    await employeeDetailPage.selectNationality(data.employee.nationality[0])
+    await employeeDetailPage.selectMaritalStatus(data.employee.maritalStatus[0])
+    await employeeDetailPage.selectGender(data.employee.gender[0] as 'Male' | 'Female')
     await employeeDetailPage.saveDetails()
     await page.waitForLoadState('networkidle')
     await dashboardPage.goToPIM()
-    await employeeListPage.searchEmployee(data.employee.firstName[4])
+    await employeeListPage.searchEmployee(data.employee.firstName[0])
 
 })

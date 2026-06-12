@@ -43,5 +43,12 @@ export default defineConfig({
       },
       dependencies: ['add-employee'],
     },
+
+    // {
+    //   name: 'assign-leave-only',
+    //   testMatch: '**/assign-leave-flow.spec.ts',
+    //   use: { ...devices['Desktop Chrome'], storageState: 'test-data/auth.json' },
+    //   // no dependencies — runs immediately, assumes employee + auth.json already exist
+    // },
   ],
 });

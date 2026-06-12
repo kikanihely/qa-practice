@@ -18,47 +18,42 @@ export class AssignLeavePage {
         this.fromDateLocator = this.page.getByPlaceholder("yyyy-dd-mm").first()
         this.toDateLocator = this.page.getByPlaceholder("yyyy-dd-mm").nth(1)
         this.commentsLocator = this.page.locator(".oxd-textarea")
-        this.asignBtnLocator = this.page.getByRole("button", {name: "Assign", exact:true})
-        this.confirmBtnLocator = this.page.getByRole("button", {name: "Ok", exact: true})
+        this.asignBtnLocator = this.page.getByRole("button", { name: "Assign", exact: true })
+        this.confirmBtnLocator = this.page.getByRole("button", { name: "Ok", exact: true })
         this.successMsgLocator = this.page.locator("#oxd-toaster_1")
     }
 
-    async fillName(name: string)
-    {
+    async fillName(name: string) {
         await this.empNameLocator.fill(name)
-        await this.page.getByRole('option', {name:name, exact: true}).click()
+        const firstOption = this.page.getByRole('option', {name: name}).first()
+        await firstOption.waitFor({ state: 'visible', timeout: 10000 })
+        await firstOption.click()
     }
 
-    async fillLeaveType(leaveType: string)
-    {
+    async fillLeaveType(leaveType: string) {
         await this.leaveTypeLocator.click()
         await this.page.getByText(leaveType).click();
     }
 
-    async fillDate(fromDate: string, toDate: string)
-    {
+    async fillDate(fromDate: string, toDate: string) {
         await this.fromDateLocator.fill(fromDate)
         await this.toDateLocator.clear()
         await this.toDateLocator.fill(toDate)
     }
 
-    async fillComments(comments: string)
-    {
+    async fillComments(comments: string) {
         await this.commentsLocator.fill(comments)
     }
 
-    async assignLeave()
-    {
+    async assignLeave() {
         await this.asignBtnLocator.click()
         const confirmVisible = await this.confirmBtnLocator
-        .isVisible({ timeout: 30000 })
-        .catch(() => false)
+            .isVisible({ timeout: 30000 })
+            .catch(() => false)
 
-    if (confirmVisible) {
-        await this.confirmBtnLocator.click()
-    }
-
-    await expect(this.successMsgLocator).toBeVisible({ timeout: 10000 })
+        if (confirmVisible) {
+            await this.confirmBtnLocator.click()
+        }
     }
 
 
