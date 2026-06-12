@@ -1,119 +1,126 @@
-<h1 align="center">🎭 Playwright Practice</h1>
- 
-<p align="center">
-  <em>Daily Playwright coding practice — locators, interactions, assertions and more.</em>
-</p>
-<p align="center">
-  <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-</p>
----
- 
-## 📌 What This Repo Is
- 
-Daily Playwright coding practice — one concept at a time.
- 
-Each folder covers one Playwright concept with working code examples. Built by practicing on real demo websites.
- 
----
- 
-## 🗂️ Repo Structure
- 
+# QA Practice - Playwright Automation Framework
+
+This repository contains an end-to-end test automation framework built with [Playwright](https://playwright.dev/) and TypeScript, using the Page Object Model (POM) design pattern.
+
+## Tech Stack
+
+- **Playwright** - browser automation framework
+- **TypeScript** - language
+- **Page Object Model** - design pattern for maintainable test code
+
+## Project Structure
+
 ```
-playwright-practice/
+.
+├── pages/                          # Page Object Model classes
+│   ├── AssignLeavePage.ts
+│   ├── DashboardPage.ts
+│   ├── EmployeeDetailPage.ts
+│   ├── EmployeeListPage.ts
+│   ├── JobListPage.ts
+│   └── LoginPage.ts
 │
-├── locators/                          ← locator strategies
-│   ├── css-locators.spec.ts
-│   ├── role-locators.spec.ts
-│   ├── filter-locators.spec.ts
-│   ├── nth-locators.spec.ts
-│   └── chaining-locators.spec.ts
+├── test-data/                      # JSON test data files
+│   ├── addEmployeeData.json
+│   ├── auth.json
+│   └── jobData.json
 │
-├── interactions/                      ← user interactions
-│   ├── fill-and-type.spec.ts
-│   ├── click-actions.spec.ts
-│   ├── dropdowns.spec.ts
-│   ├── checkboxes.spec.ts
-│   ├── file-upload.spec.ts
-│   ├── drag-and-drop.spec.ts
-│   ├── hover.spec.ts
-│   ├── keyboard-actions.spec.ts
-│   └── scroll.spec.ts
+├── tests/
+│   ├── pom-tests/                  # Tests built using Page Object Model
+│   │   ├── add-employee-flow.spec.ts
+│   │   ├── add-job-title-flow.spec.ts
+│   │   ├── assign-leave-flow.spec.ts
+│   │   └── auth.spec.ts
+│   │
+│   ├── alerts-popups.spec.ts       # Handling alerts & popups
+│   ├── assertions.spec.ts          # Assertion examples
+│   ├── auto-waiting.spec.ts        # Auto-waiting behavior
+│   ├── built-in-locators.spec.ts   # Built-in locator strategies
+│   ├── css-locators.spec.ts        # CSS locator strategies
+│   ├── drop-date.spec.ts           # Date picker / dropdown handling
+│   ├── iframe.spec.ts              # iFrame interactions
+│   ├── keyboard-mouse.spec.ts      # Keyboard & mouse actions
+│   ├── multiple-window.spec.ts     # Multi-tab/window handling
+│   ├── screenshot.spec.ts          # Screenshot capture
+│   └── xpath-filtering-locators.spec.ts  # XPath locator strategies
 │
-├── assertions/                        ← all assertion types
-│   ├── text-assertions.spec.ts
-│   ├── url-assertions.spec.ts
-│   ├── visibility-assertions.spec.ts
-│   ├── attribute-assertions.spec.ts
-│   └── count-assertions.spec.ts
-│
-├── waits/                             ← wait strategies
-│   ├── auto-wait.spec.ts
-│   ├── explicit-wait.spec.ts
-│   └── network-wait.spec.ts
-│
-├── navigation/                        ← page navigation
-│   ├── goto-back-forward.spec.ts
-│   ├── new-tab.spec.ts
-│   └── iframe.spec.ts
-│
-├── alerts/                            ← browser dialogs
-│   └── alerts-dialogs.spec.ts
-│
-├── screenshots/                       ← screenshots and video
-│   └── capture.spec.ts
-│
-├── codegen/                           ← recorded codegen flows
-│   ├── login-flow.codegen.ts
-│   └── search-flow.codegen.ts
-│
-├── playwright.config.ts
-├── tsconfig.json
+├── playwright-report/              # HTML test reports
+├── screenshot/                      # Captured screenshots
+├── test-results/                   # Raw test results/artifacts
+├── playwright.config.ts            # Playwright configuration
 ├── package.json
-└── README.md
+└── package-lock.json
 ```
- 
----
- 
-## ⚙️ Setup
- 
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- npm
+
+### Installation
+
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/playwright-practice.git
-cd playwright-practice
- 
-# Install dependencies
+git clone <repo-url>
+cd qa-practice
 npm install
- 
-# Install browsers
 npx playwright install
- 
-# Run all
+```
+
+## Running Tests
+
+Run all tests:
+```bash
 npx playwright test
- 
-# Run specific concept
-npx playwright test locators/
-npx playwright test interactions/
-npx playwright test assertions/
- 
-# Run with UI
-npx playwright test --ui
- 
-# Run headed
+```
+
+Run a specific test file:
+```bash
+npx playwright test tests/pom-tests/add-employee-flow.spec.ts
+```
+
+Run tests in headed mode (visible browser):
+```bash
 npx playwright test --headed
 ```
- 
----
- 
-## 🛠️ Tech Stack
- 
-| Tool | Purpose |
-|------|---------|
-| Playwright | Automation framework |
-| TypeScript | Scripting language |
- 
----
- 
-## 🙋 Author
- 
-**Kikani Hely**
+
+Run tests in debug mode:
+```bash
+npx playwright test --debug
+```
+
+Run a specific test by name:
+```bash
+npx playwright test -g "test name"
+```
+
+## Viewing Reports
+
+After a test run, view the HTML report:
+```bash
+npx playwright show-report
+```
+
+## Test Data
+
+Test data is stored in JSON files under `test-data/`:
+- `addEmployeeData.json` - data for employee creation flows
+- `jobData.json` - data for job title flows
+- `auth.json` - stored authentication state for reuse across tests
+
+## Page Object Model
+
+The `pages/` directory contains classes that encapsulate locators and actions for each page of the application under test (Login, Dashboard, Employee List/Detail, Job List, Assign Leave). Tests in `tests/pom-tests/` use these page objects to keep test logic clean and reusable.
+
+## Locator & Feature Examples
+
+The root-level spec files in `tests/` demonstrate various Playwright concepts and locator strategies, including CSS selectors, XPath, built-in locators, iframes, alerts/popups, keyboard & mouse actions, multi-window handling, auto-waiting, and assertions - useful as a learning reference or playground.
+
+## Configuration
+
+Playwright configuration (browsers, timeouts, reporters, base URL, etc.) is defined in `playwright.config.ts`.
+
+## License
+
+This project is for learning/practice purposes.
