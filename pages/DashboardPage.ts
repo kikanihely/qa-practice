@@ -4,10 +4,12 @@ import {Locator, Page} from "@playwright/test";
 export class DashboardPage {
     pimLocator: Locator;
     assignLeaveLocator: Locator;
+    adminLocator: Locator;
 
     constructor(public page: Page) {
         this.pimLocator = this.page.getByRole("link", {name: "PIM"});
         this.assignLeaveLocator = this.page.getByRole('button', { name: 'Assign Leave' });
+        this.adminLocator = this.page.locator(`a[href="/web/index.php/admin/viewAdminModule"]`)
     }
 
     async gotoDashboard() {
@@ -22,6 +24,11 @@ export class DashboardPage {
     async goToAssignLeavePage () {
         await this.assignLeaveLocator.click();
         await expect(this.page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/leave/assignLeave")
+    }
+
+    async goToAdminPage () {
+        await this.adminLocator.click();
+        await expect(this.page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers")
     }
 
 }

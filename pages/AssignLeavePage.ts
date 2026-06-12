@@ -15,8 +15,8 @@ export class AssignLeavePage {
     constructor(public page: Page) {
         this.empNameLocator = this.page.getByPlaceholder("Type for hints...")
         this.leaveTypeLocator = this.page.getByText("-- Select --")
-        this.fromDateLocator = this.page.getByPlaceholder("yyyy-dd-mm").first()
-        this.toDateLocator = this.page.getByPlaceholder("yyyy-dd-mm").nth(1)
+        this.fromDateLocator = this.page.getByPlaceholder("dd-yyyy-mm").first()
+        this.toDateLocator = this.page.getByPlaceholder("dd-yyyy-mm").nth(1)
         this.commentsLocator = this.page.locator(".oxd-textarea")
         this.asignBtnLocator = this.page.getByRole("button", { name: "Assign", exact: true })
         this.confirmBtnLocator = this.page.getByRole("button", { name: "Ok", exact: true })

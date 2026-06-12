@@ -1,0 +1,54 @@
+{
+  "job": [
+    {
+      "title": "QA Automation Engineer",
+      "description": "Responsible for designing, developing, and maintaining automated test scripts for web and mobile applications. Works closely with development teams to ensure product quality.",
+      "note": "Requires hands-on experience with Playwright, Selenium, or Cypress."
+    },
+    {
+      "title": "Backend Developer",
+      "description": "Designs and implements server-side logic, databases, and APIs to support frontend applications. Ensures scalability, security, and performance of backend systems.",
+      "note": "Proficiency in Node.js, Java, or Python is preferred."
+    },
+    {
+      "title": "Frontend Developer",
+      "description": "Builds responsive and interactive user interfaces using modern JavaScript frameworks. Collaborates with designers to translate UI/UX wireframes into functional code.",
+      "note": "Experience with React, Angular, or Vue.js required."
+    },
+    {
+      "title": "DevOps Engineer",
+      "description": "Manages CI/CD pipelines, cloud infrastructure, and deployment automation. Works to improve system reliability, monitoring, and release processes.",
+      "note": "Knowledge of Docker, Kubernetes, and AWS is a plus."
+    },
+    {
+      "title": "Business Analyst",
+      "description": "Gathers and documents business requirements, analyzes workflows, and bridges communication between stakeholders and the development team.",
+      "note": "Strong communication and documentation skills required."
+    },
+    {
+      "title": "UI/UX Designer",
+      "description": "Creates intuitive and visually appealing designs for web and mobile applications. Conducts user research and builds wireframes, prototypes, and design systems.",
+      "note": "Proficiency in Figma or Adobe XD expected."
+    },
+    {
+      "title": "Project Coordinator",
+      "description": "Assists project managers in planning, scheduling, and tracking project deliverables. Maintains documentation and coordinates communication between teams.",
+      "note": "Familiarity with Jira and Agile methodology preferred."
+    },
+    {
+      "title": "Database Administrator",
+      "description": "Manages database systems, ensures data integrity, performs backups, and optimizes query performance for large-scale applications.",
+      "note": "Experience with MySQL, PostgreSQL, or MongoDB required."
+    },
+    {
+      "title": "Technical Support Engineer",
+      "description": "Provides first and second-level support to customers, troubleshoots software issues, and escalates complex problems to engineering teams.",
+      "note": "Good problem-solving and customer communication skills needed."
+    },
+    {
+      "title": "HR Executive",
+      "description": "Handles recruitment, onboarding, employee records, and HR policy implementation. Supports payroll processing and employee engagement activities.",
+      "note": "Experience with HRMS tools like OrangeHRM is beneficial."
+    }
+  ]
+}

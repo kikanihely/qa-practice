@@ -41,14 +41,17 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         storageState: 'test-data/auth.json',
       },
-      dependencies: ['add-employee'],
+      dependencies: ['setup'],
     },
 
-    // {
-    //   name: 'assign-leave-only',
-    //   testMatch: '**/assign-leave-flow.spec.ts',
-    //   use: { ...devices['Desktop Chrome'], storageState: 'test-data/auth.json' },
-    //   // no dependencies — runs immediately, assumes employee + auth.json already exist
-    // },
+    {
+      name:'add-job-title',
+      testMatch: '**/add-job-title-flow.spec.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'test-data/auth.json',
+      },
+      dependencies: ['setup'],
+    }
   ],
 });
