@@ -13,7 +13,7 @@ test("Add Employee Flow", async ({page}) => {
     await dashboardPage.gotoDashboard()
     await dashboardPage.goToPIM();
     await employeeListPage.clickAddEmployee();
-    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[3], data.employee.middleName[4], data.employee.lastName[4], data.employee.employeeId[4]);
+    await employeeAddPage.fillEmployeeDetails(data.employee.firstName[4], data.employee.middleName[4], data.employee.lastName[4], data.employee.employeeId[4]);
     await employeeAddPage.fillLoginDetails(data.employee.username[4], data.employee.password[4]);
     await employeeDetailPage.fillDriverLicense(data.employee.driverLicenseNumber[4])
     await employeeDetailPage.fillExpiryDate(data.employee.licenseExpiryDate[4])
