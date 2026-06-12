@@ -1,54 +1,54 @@
 {
   "job": [
     {
-      "title": "QA Automation Engineer",
-      "description": "Responsible for designing, developing, and maintaining automated test scripts for web and mobile applications. Works closely with development teams to ensure product quality.",
-      "note": "Requires hands-on experience with Playwright, Selenium, or Cypress."
+      "title": "Cloud Infrastructure Engineer",
+      "description": "Designs, deploys, and maintains scalable cloud infrastructure across AWS, Azure, or GCP. Ensures high availability, security, and cost optimization of cloud resources.",
+      "note": "Certification in AWS/Azure cloud architecture is a plus."
     },
     {
-      "title": "Backend Developer",
-      "description": "Designs and implements server-side logic, databases, and APIs to support frontend applications. Ensures scalability, security, and performance of backend systems.",
-      "note": "Proficiency in Node.js, Java, or Python is preferred."
+      "title": "Mobile App Developer",
+      "description": "Develops and maintains native or cross-platform mobile applications for iOS and Android. Works closely with UX teams to deliver smooth, performant user experiences.",
+      "note": "Experience with React Native or Flutter preferred."
     },
     {
-      "title": "Frontend Developer",
-      "description": "Builds responsive and interactive user interfaces using modern JavaScript frameworks. Collaborates with designers to translate UI/UX wireframes into functional code.",
-      "note": "Experience with React, Angular, or Vue.js required."
+      "title": "Security Analyst",
+      "description": "Monitors systems for security breaches, conducts vulnerability assessments, and implements measures to protect organizational data and infrastructure.",
+      "note": "Knowledge of penetration testing tools and OWASP standards required."
     },
     {
-      "title": "DevOps Engineer",
-      "description": "Manages CI/CD pipelines, cloud infrastructure, and deployment automation. Works to improve system reliability, monitoring, and release processes.",
-      "note": "Knowledge of Docker, Kubernetes, and AWS is a plus."
+      "title": "Data Analyst",
+      "description": "Collects, processes, and analyzes large datasets to identify trends and provide actionable business insights through reports and dashboards.",
+      "note": "Proficiency in SQL, Excel, and visualization tools like Power BI or Tableau."
     },
     {
-      "title": "Business Analyst",
-      "description": "Gathers and documents business requirements, analyzes workflows, and bridges communication between stakeholders and the development team.",
-      "note": "Strong communication and documentation skills required."
+      "title": "Scrum Master",
+      "description": "Facilitates Agile ceremonies, removes team blockers, and ensures the development team follows Scrum practices to deliver projects on time.",
+      "note": "Certified Scrum Master (CSM) certification preferred."
     },
     {
-      "title": "UI/UX Designer",
-      "description": "Creates intuitive and visually appealing designs for web and mobile applications. Conducts user research and builds wireframes, prototypes, and design systems.",
-      "note": "Proficiency in Figma or Adobe XD expected."
+      "title": "Content Writer",
+      "description": "Creates clear, engaging, and SEO-optimized content for blogs, websites, and marketing materials. Collaborates with marketing and design teams.",
+      "note": "Strong portfolio of published writing samples required."
     },
     {
-      "title": "Project Coordinator",
-      "description": "Assists project managers in planning, scheduling, and tracking project deliverables. Maintains documentation and coordinates communication between teams.",
-      "note": "Familiarity with Jira and Agile methodology preferred."
+      "title": "Network Administrator",
+      "description": "Maintains and troubleshoots organizational network infrastructure including routers, switches, firewalls, and VPNs to ensure reliable connectivity.",
+      "note": "CCNA certification or equivalent experience preferred."
     },
     {
-      "title": "Database Administrator",
-      "description": "Manages database systems, ensures data integrity, performs backups, and optimizes query performance for large-scale applications.",
-      "note": "Experience with MySQL, PostgreSQL, or MongoDB required."
+      "title": "Performance Test Engineer",
+      "description": "Designs and executes load, stress, and performance test scripts to evaluate application scalability and identify bottlenecks under high traffic.",
+      "note": "Experience with JMeter, k6, or LoadRunner required."
     },
     {
-      "title": "Technical Support Engineer",
-      "description": "Provides first and second-level support to customers, troubleshoots software issues, and escalates complex problems to engineering teams.",
-      "note": "Good problem-solving and customer communication skills needed."
+      "title": "Talent Acquisition Specialist",
+      "description": "Manages end-to-end recruitment process including sourcing, screening, interviewing, and onboarding candidates for technical and non-technical roles.",
+      "note": "Familiarity with LinkedIn Recruiter and ATS tools preferred."
     },
     {
-      "title": "HR Executive",
-      "description": "Handles recruitment, onboarding, employee records, and HR policy implementation. Supports payroll processing and employee engagement activities.",
-      "note": "Experience with HRMS tools like OrangeHRM is beneficial."
+      "title": "Product Owner",
+      "description": "Defines product vision, prioritizes the backlog, and works with stakeholders and development teams to ensure delivery of high-value features.",
+      "note": "Strong stakeholder management and prioritization skills needed."
     }
   ]
 }
