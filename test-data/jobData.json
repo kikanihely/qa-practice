@@ -1,54 +1,49 @@
 {
   "job": [
-    {
-      "title": "Cloud Infrastructure Engineer",
-      "description": "Designs, deploys, and maintains scalable cloud infrastructure across AWS, Azure, or GCP. Ensures high availability, security, and cost optimization of cloud resources.",
-      "note": "Certification in AWS/Azure cloud architecture is a plus."
-    },
-    {
-      "title": "Mobile App Developer",
-      "description": "Develops and maintains native or cross-platform mobile applications for iOS and Android. Works closely with UX teams to deliver smooth, performant user experiences.",
-      "note": "Experience with React Native or Flutter preferred."
-    },
-    {
-      "title": "Security Analyst",
-      "description": "Monitors systems for security breaches, conducts vulnerability assessments, and implements measures to protect organizational data and infrastructure.",
-      "note": "Knowledge of penetration testing tools and OWASP standards required."
-    },
-    {
-      "title": "Data Analyst",
-      "description": "Collects, processes, and analyzes large datasets to identify trends and provide actionable business insights through reports and dashboards.",
-      "note": "Proficiency in SQL, Excel, and visualization tools like Power BI or Tableau."
-    },
-    {
-      "title": "Scrum Master",
-      "description": "Facilitates Agile ceremonies, removes team blockers, and ensures the development team follows Scrum practices to deliver projects on time.",
-      "note": "Certified Scrum Master (CSM) certification preferred."
-    },
-    {
-      "title": "Content Writer",
-      "description": "Creates clear, engaging, and SEO-optimized content for blogs, websites, and marketing materials. Collaborates with marketing and design teams.",
-      "note": "Strong portfolio of published writing samples required."
-    },
-    {
-      "title": "Network Administrator",
-      "description": "Maintains and troubleshoots organizational network infrastructure including routers, switches, firewalls, and VPNs to ensure reliable connectivity.",
-      "note": "CCNA certification or equivalent experience preferred."
-    },
-    {
-      "title": "Performance Test Engineer",
-      "description": "Designs and executes load, stress, and performance test scripts to evaluate application scalability and identify bottlenecks under high traffic.",
-      "note": "Experience with JMeter, k6, or LoadRunner required."
-    },
-    {
-      "title": "Talent Acquisition Specialist",
-      "description": "Manages end-to-end recruitment process including sourcing, screening, interviewing, and onboarding candidates for technical and non-technical roles.",
-      "note": "Familiarity with LinkedIn Recruiter and ATS tools preferred."
-    },
-    {
-      "title": "Product Owner",
-      "description": "Defines product vision, prioritizes the backlog, and works with stakeholders and development teams to ensure delivery of high-value features.",
-      "note": "Strong stakeholder management and prioritization skills needed."
-    }
-  ]
+        {
+            "title": "Digital Forensics Analyst",
+            "description": "Investigates cybercrimes and security incidents by recovering and analyzing digital evidence from devices, networks, and cloud systems.",
+            "note": "Certified in EnCase or FTK forensic toolkits preferred."
+        },
+        {
+            "title": "Spatial Data Engineer",
+            "description": "Builds and maintains geospatial data pipelines and mapping systems. Processes satellite imagery, GPS data, and GIS layers for urban planning and logistics applications.",
+            "note": "Experience with PostGIS, QGIS, or ArcGIS required."
+        },
+        {
+            "title": "Bioinformatics Developer",
+            "description": "Develops software tools and pipelines for processing and analyzing genomic and proteomic data. Works at the intersection of biology, statistics, and software engineering.",
+            "note": "Familiarity with Python, R, and genomic file formats such as VCF and FASTQ expected."
+        },
+        {
+            "title": "Quantum Computing Researcher",
+            "description": "Explores quantum algorithms and circuit design to solve computational problems beyond the capability of classical computers. Collaborates with hardware and software teams.",
+            "note": "Background in quantum mechanics and linear algebra is mandatory."
+        },
+        {
+            "title": "Haptics Engineer",
+            "description": "Designs tactile feedback systems for wearables, medical devices, and gaming controllers. Creates vibration patterns and force feedback mechanisms that enhance user experience.",
+            "note": "Experience with actuator calibration and embedded systems required."
+        },
+        {
+            "title": "Neurotech Interface Developer",
+            "description": "Builds software interfaces for brain-computer interaction devices. Processes EEG and neural signal data to translate brain activity into actionable digital commands.",
+            "note": "Knowledge of signal processing and neuroscience fundamentals is essential."
+        },
+        {
+            "title": "Synthetic Media Auditor",
+            "description": "Detects and classifies AI-generated deepfake content across video, audio, and image formats. Develops detection pipelines and reports findings to compliance teams.",
+            "note": "Familiarity with GAN architecture and media forensics tools preferred."
+        },
+        {
+            "title": "Digital Twin Architect",
+            "description": "Creates virtual replicas of physical systems such as factories, buildings, or supply chains using real-time IoT sensor data to simulate, monitor, and optimize operations.",
+            "note": "Experience with IoT platforms, simulation engines, and 3D modeling tools required."
+        },
+        {
+            "title": "Algorithmic Bias Auditor",
+            "description": "Evaluates machine learning models and automated decision systems for fairness, transparency, and compliance with ethical AI standards and regulatory frameworks.",
+            "note": "Background in AI ethics, statistics, and fairness metrics such as demographic parity required."
+        }
+    ]
 }
