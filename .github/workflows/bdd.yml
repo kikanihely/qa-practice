@@ -42,49 +42,76 @@ jobs:
       with:
         payload: |
           {
-            "text": "✅ *BDD Tests Passed!*",
-            "attachments": [{
-              "color": "good",
-              "fields": [
-                {
-                  "title": "📁 Repository",
-                  "value": "<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>",
-                  "short": true
-                },
-                {
-                  "title": "🌿 Branch",
-                  "value": "${{ github.ref_name }}",
-                  "short": true
-                },
-                {
-                  "title": "👤 Triggered by",
-                  "value": "${{ github.actor }}",
-                  "short": true
-                },
-                {
-                  "title": "⚡ Trigger type",
-                  "value": "${{ github.event_name }}",
-                  "short": true
-                },
-                {
-                  "title": "🔖 Commit SHA",
-                  "value": "<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>",
-                  "short": false
-                },
-                {
-                  "title": "💬 Commit Message",
-                  "value": "${{ github.event.head_commit.message }}",
-                  "short": false
-                },
-                {
-                  "title": "🔗 View GitHub Actions Run",
-                  "value": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here to view run>",
-                  "short": false
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "✅ BDD Tests Passed!"
                 }
-              ],
-              "footer": "GitHub Actions | BDD Automation",
-              "ts": "${{ github.event.head_commit.timestamp }}"
-            }]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*📁 Repository:*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*🌿 Branch:*\n`${{ github.ref_name }}`"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*👤 Triggered by:*\n${{ github.actor }}"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*⚡ Trigger type:*\n`${{ github.event_name }}`"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*🔖 Commit SHA:*\n<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*💬 Commit Message:*\n${{ github.event.head_commit.message }}"
+                  }
+                ]
+              },
+              {
+                "type": "actions",
+                "elements": [
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "🔗 View Actions Run"
+                    },
+                    "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "GitHub Actions | BDD Automation"
+                  }
+                ]
+              }
+            ]
           }
 
     - name: Notify Slack — Failure
@@ -95,47 +122,74 @@ jobs:
       with:
         payload: |
           {
-            "text": "❌ *BDD Tests Failed!*",
-            "attachments": [{
-              "color": "danger",
-              "fields": [
-                {
-                  "title": "📁 Repository",
-                  "value": "<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>",
-                  "short": true
-                },
-                {
-                  "title": "🌿 Branch",
-                  "value": "${{ github.ref_name }}",
-                  "short": true
-                },
-                {
-                  "title": "👤 Triggered by",
-                  "value": "${{ github.actor }}",
-                  "short": true
-                },
-                {
-                  "title": "⚡ Trigger type",
-                  "value": "${{ github.event_name }}",
-                  "short": true
-                },
-                {
-                  "title": "🔖 Commit SHA",
-                  "value": "<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>",
-                  "short": false
-                },
-                {
-                  "title": "💬 Commit Message",
-                  "value": "${{ github.event.head_commit.message }}",
-                  "short": false
-                },
-                {
-                  "title": "🔗 View Failure Logs",
-                  "value": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here to view logs>",
-                  "short": false
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "❌ BDD Tests Failed!"
                 }
-              ],
-              "footer": "GitHub Actions | BDD Automation",
-              "ts": "${{ github.event.head_commit.timestamp }}"
-            }]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*📁 Repository:*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*🌿 Branch:*\n`${{ github.ref_name }}`"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*👤 Triggered by:*\n${{ github.actor }}"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*⚡ Trigger type:*\n`${{ github.event_name }}`"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*🔖 Commit SHA:*\n<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*💬 Commit Message:*\n${{ github.event.head_commit.message }}"
+                  }
+                ]
+              },
+              {
+                "type": "actions",
+                "elements": [
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "🔗 View Failure Logs"
+                    },
+                    "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "GitHub Actions | BDD Automation"
+                  }
+                ]
+              }
+            ]
           }
