@@ -1,32 +1,68 @@
-- name: Notify Slack — Success
+name: BDD Playwright Tests
+on:
+  push:
+    branches: [ bdd-automation ]
+  pull_request:
+    branches: [ bdd-automation ]
+  schedule:
+    - cron: '0 9 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run BDD Tests
+      run: npx cucumber-js --profile login
+
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: cucumber-report
+        path: reports/
+        retention-days: 30
+
+    - name: Notify Slack Success
       if: success()
       run: |
-        cat > /tmp/slack_success.json << 'ENDJSON'
+        cat > /tmp/slack.json << 'ENDJSON'
         {
           "blocks": [
             {
               "type": "header",
-              "text": { "type": "plain_text", "text": "✅ BDD Tests Passed!" }
+              "text": { "type": "plain_text", "text": "BDD Tests Passed!" }
             },
             {
               "type": "section",
               "fields": [
-                { "type": "mrkdwn", "text": "*📁 Repository:*\n<REPO_URL|REPO_NAME>" },
-                { "type": "mrkdwn", "text": "*🌿 Branch:*\nBRANCH_NAME" }
+                { "type": "mrkdwn", "text": "*Repository:*\n<REPO_URL|REPO_NAME>" },
+                { "type": "mrkdwn", "text": "*Branch:*\nBRANCH_NAME" }
               ]
             },
             {
               "type": "section",
               "fields": [
-                { "type": "mrkdwn", "text": "*👤 Triggered by:*\nACTOR_NAME" },
-                { "type": "mrkdwn", "text": "*⚡ Trigger type:*\nEVENT_NAME" }
+                { "type": "mrkdwn", "text": "*Triggered by:*\nACTOR_NAME" },
+                { "type": "mrkdwn", "text": "*Trigger type:*\nEVENT_NAME" }
               ]
             },
             {
               "type": "section",
               "fields": [
-                { "type": "mrkdwn", "text": "*🔖 Commit SHA:*\n<COMMIT_URL|COMMIT_SHA>" },
-                { "type": "mrkdwn", "text": "*💬 Commit Message:*\nCOMMIT_MSG" }
+                { "type": "mrkdwn", "text": "*Commit SHA:*\n<COMMIT_URL|COMMIT_SHA>" },
+                { "type": "mrkdwn", "text": "*Commit Message:*\nCOMMIT_MSG" }
               ]
             },
             {
@@ -34,7 +70,7 @@
               "elements": [
                 {
                   "type": "button",
-                  "text": { "type": "plain_text", "text": "🔗 View Actions Run" },
+                  "text": { "type": "plain_text", "text": "View Actions Run" },
                   "url": "RUN_URL"
                 }
               ]
@@ -48,50 +84,48 @@
           ]
         }
         ENDJSON
-
-        sed -i "s|REPO_URL|${{ github.server_url }}/${{ github.repository }}|g" /tmp/slack_success.json
-        sed -i "s|REPO_NAME|${{ github.repository }}|g" /tmp/slack_success.json
-        sed -i "s|BRANCH_NAME|${{ github.ref_name }}|g" /tmp/slack_success.json
-        sed -i "s|ACTOR_NAME|${{ github.actor }}|g" /tmp/slack_success.json
-        sed -i "s|EVENT_NAME|${{ github.event_name }}|g" /tmp/slack_success.json
-        sed -i "s|COMMIT_URL|${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|g" /tmp/slack_success.json
-        sed -i "s|COMMIT_SHA|${{ github.sha }}|g" /tmp/slack_success.json
-        sed -i "s|COMMIT_MSG|${{ github.event.head_commit.message }}|g" /tmp/slack_success.json
-        sed -i "s|RUN_URL|${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|g" /tmp/slack_success.json
-
+        sed -i "s|REPO_URL|${{ github.server_url }}/${{ github.repository }}|g" /tmp/slack.json
+        sed -i "s|REPO_NAME|${{ github.repository }}|g" /tmp/slack.json
+        sed -i "s|BRANCH_NAME|${{ github.ref_name }}|g" /tmp/slack.json
+        sed -i "s|ACTOR_NAME|${{ github.actor }}|g" /tmp/slack.json
+        sed -i "s|EVENT_NAME|${{ github.event_name }}|g" /tmp/slack.json
+        sed -i "s|COMMIT_URL|${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|g" /tmp/slack.json
+        sed -i "s|COMMIT_SHA|${{ github.sha }}|g" /tmp/slack.json
+        sed -i "s|COMMIT_MSG|${{ github.event.head_commit.message }}|g" /tmp/slack.json
+        sed -i "s|RUN_URL|${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|g" /tmp/slack.json
         curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
           -H 'Content-type: application/json' \
-          --data @/tmp/slack_success.json
+          --data @/tmp/slack.json
 
-    - name: Notify Slack — Failure
+    - name: Notify Slack Failure
       if: failure()
       run: |
-        cat > /tmp/slack_failure.json << 'ENDJSON'
+        cat > /tmp/slack.json << 'ENDJSON'
         {
           "blocks": [
             {
               "type": "header",
-              "text": { "type": "plain_text", "text": "❌ BDD Tests Failed!" }
+              "text": { "type": "plain_text", "text": "BDD Tests Failed!" }
             },
             {
               "type": "section",
               "fields": [
-                { "type": "mrkdwn", "text": "*📁 Repository:*\n<REPO_URL|REPO_NAME>" },
-                { "type": "mrkdwn", "text": "*🌿 Branch:*\nBRANCH_NAME" }
+                { "type": "mrkdwn", "text": "*Repository:*\n<REPO_URL|REPO_NAME>" },
+                { "type": "mrkdwn", "text": "*Branch:*\nBRANCH_NAME" }
               ]
             },
             {
               "type": "section",
               "fields": [
-                { "type": "mrkdwn", "text": "*👤 Triggered by:*\nACTOR_NAME" },
-                { "type": "mrkdwn", "text": "*⚡ Trigger type:*\nEVENT_NAME" }
+                { "type": "mrkdwn", "text": "*Triggered by:*\nACTOR_NAME" },
+                { "type": "mrkdwn", "text": "*Trigger type:*\nEVENT_NAME" }
               ]
             },
             {
               "type": "section",
               "fields": [
-                { "type": "mrkdwn", "text": "*🔖 Commit SHA:*\n<COMMIT_URL|COMMIT_SHA>" },
-                { "type": "mrkdwn", "text": "*💬 Commit Message:*\nCOMMIT_MSG" }
+                { "type": "mrkdwn", "text": "*Commit SHA:*\n<COMMIT_URL|COMMIT_SHA>" },
+                { "type": "mrkdwn", "text": "*Commit Message:*\nCOMMIT_MSG" }
               ]
             },
             {
@@ -99,7 +133,7 @@
               "elements": [
                 {
                   "type": "button",
-                  "text": { "type": "plain_text", "text": "🔗 View Failure Logs" },
+                  "text": { "type": "plain_text", "text": "View Failure Logs" },
                   "url": "RUN_URL"
                 }
               ]
@@ -113,17 +147,15 @@
           ]
         }
         ENDJSON
-
-        sed -i "s|REPO_URL|${{ github.server_url }}/${{ github.repository }}|g" /tmp/slack_failure.json
-        sed -i "s|REPO_NAME|${{ github.repository }}|g" /tmp/slack_failure.json
-        sed -i "s|BRANCH_NAME|${{ github.ref_name }}|g" /tmp/slack_failure.json
-        sed -i "s|ACTOR_NAME|${{ github.actor }}|g" /tmp/slack_failure.json
-        sed -i "s|EVENT_NAME|${{ github.event_name }}|g" /tmp/slack_failure.json
-        sed -i "s|COMMIT_URL|${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|g" /tmp/slack_failure.json
-        sed -i "s|COMMIT_SHA|${{ github.sha }}|g" /tmp/slack_failure.json
-        sed -i "s|COMMIT_MSG|${{ github.event.head_commit.message }}|g" /tmp/slack_failure.json
-        sed -i "s|RUN_URL|${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|g" /tmp/slack_failure.json
-
+        sed -i "s|REPO_URL|${{ github.server_url }}/${{ github.repository }}|g" /tmp/slack.json
+        sed -i "s|REPO_NAME|${{ github.repository }}|g" /tmp/slack.json
+        sed -i "s|BRANCH_NAME|${{ github.ref_name }}|g" /tmp/slack.json
+        sed -i "s|ACTOR_NAME|${{ github.actor }}|g" /tmp/slack.json
+        sed -i "s|EVENT_NAME|${{ github.event_name }}|g" /tmp/slack.json
+        sed -i "s|COMMIT_URL|${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|g" /tmp/slack.json
+        sed -i "s|COMMIT_SHA|${{ github.sha }}|g" /tmp/slack.json
+        sed -i "s|COMMIT_MSG|${{ github.event.head_commit.message }}|g" /tmp/slack.json
+        sed -i "s|RUN_URL|${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|g" /tmp/slack.json
         curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
           -H 'Content-type: application/json' \
-          --data @/tmp/slack_failure.json
+          --data @/tmp/slack.json
