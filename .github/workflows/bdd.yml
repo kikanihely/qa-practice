@@ -36,57 +36,34 @@ jobs:
 
     - name: Notify Slack — Success
       if: success()
-      uses: slackapi/slack-github-action@v1.26.0
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with:
-        payload: |
-          {
+      run: |
+        curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
+          -H 'Content-type: application/json' \
+          --data '{
             "blocks": [
               {
                 "type": "header",
-                "text": {
-                  "type": "plain_text",
-                  "text": "✅ BDD Tests Passed!"
-                }
+                "text": { "type": "plain_text", "text": "✅ BDD Tests Passed!" }
               },
               {
                 "type": "section",
                 "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*📁 Repository:*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*🌿 Branch:*\n`${{ github.ref_name }}`"
-                  }
+                  { "type": "mrkdwn", "text": "*📁 Repository:*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>" },
+                  { "type": "mrkdwn", "text": "*🌿 Branch:*\n`${{ github.ref_name }}`" }
                 ]
               },
               {
                 "type": "section",
                 "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*👤 Triggered by:*\n${{ github.actor }}"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*⚡ Trigger type:*\n`${{ github.event_name }}`"
-                  }
+                  { "type": "mrkdwn", "text": "*👤 Triggered by:*\n${{ github.actor }}" },
+                  { "type": "mrkdwn", "text": "*⚡ Trigger type:*\n`${{ github.event_name }}`" }
                 ]
               },
               {
                 "type": "section",
                 "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*🔖 Commit SHA:*\n<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*💬 Commit Message:*\n${{ github.event.head_commit.message }}"
-                  }
+                  { "type": "mrkdwn", "text": "*🔖 Commit SHA:*\n<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>" },
+                  { "type": "mrkdwn", "text": "*💬 Commit Message:*\n${{ github.event.head_commit.message }}" }
                 ]
               },
               {
@@ -94,10 +71,7 @@ jobs:
                 "elements": [
                   {
                     "type": "button",
-                    "text": {
-                      "type": "plain_text",
-                      "text": "🔗 View Actions Run"
-                    },
+                    "text": { "type": "plain_text", "text": "🔗 View Actions Run" },
                     "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                   }
                 ]
@@ -105,68 +79,42 @@ jobs:
               {
                 "type": "context",
                 "elements": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "GitHub Actions | BDD Automation"
-                  }
+                  { "type": "mrkdwn", "text": "GitHub Actions | BDD Automation" }
                 ]
               }
             ]
-          }
+          }'
 
     - name: Notify Slack — Failure
       if: failure()
-      uses: slackapi/slack-github-action@v1.26.0
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with:
-        payload: |
-          {
+      run: |
+        curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
+          -H 'Content-type: application/json' \
+          --data '{
             "blocks": [
               {
                 "type": "header",
-                "text": {
-                  "type": "plain_text",
-                  "text": "❌ BDD Tests Failed!"
-                }
+                "text": { "type": "plain_text", "text": "❌ BDD Tests Failed!" }
               },
               {
                 "type": "section",
                 "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*📁 Repository:*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*🌿 Branch:*\n`${{ github.ref_name }}`"
-                  }
+                  { "type": "mrkdwn", "text": "*📁 Repository:*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>" },
+                  { "type": "mrkdwn", "text": "*🌿 Branch:*\n`${{ github.ref_name }}`" }
                 ]
               },
               {
                 "type": "section",
                 "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*👤 Triggered by:*\n${{ github.actor }}"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*⚡ Trigger type:*\n`${{ github.event_name }}`"
-                  }
+                  { "type": "mrkdwn", "text": "*👤 Triggered by:*\n${{ github.actor }}" },
+                  { "type": "mrkdwn", "text": "*⚡ Trigger type:*\n`${{ github.event_name }}`" }
                 ]
               },
               {
                 "type": "section",
                 "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*🔖 Commit SHA:*\n<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*💬 Commit Message:*\n${{ github.event.head_commit.message }}"
-                  }
+                  { "type": "mrkdwn", "text": "*🔖 Commit SHA:*\n<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>" },
+                  { "type": "mrkdwn", "text": "*💬 Commit Message:*\n${{ github.event.head_commit.message }}" }
                 ]
               },
               {
@@ -174,10 +122,7 @@ jobs:
                 "elements": [
                   {
                     "type": "button",
-                    "text": {
-                      "type": "plain_text",
-                      "text": "🔗 View Failure Logs"
-                    },
+                    "text": { "type": "plain_text", "text": "🔗 View Failure Logs" },
                     "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                   }
                 ]
@@ -185,11 +130,8 @@ jobs:
               {
                 "type": "context",
                 "elements": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "GitHub Actions | BDD Automation"
-                  }
+                  { "type": "mrkdwn", "text": "GitHub Actions | BDD Automation" }
                 ]
               }
             ]
-          }
+          }'
