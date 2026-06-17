@@ -26,3 +26,43 @@ jobs:
         name: cucumber-report
         path: reports/
         retention-days: 30
+
+    # ── ADD THESE TWO STEPS BELOW ──────────────────────────────────
+
+    - name: Notify Slack — Success
+      if: success()
+      uses: slackapi/slack-github-action@v1.26.0
+      with:
+        webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+        webhook-type: incoming-webhook
+        payload: |
+          {
+            "text": "✅ *BDD Tests Passed!*",
+            "attachments": [{
+              "color": "good",
+              "fields": [
+                { "title": "Branch",        "value": "${{ github.ref_name }}",   "short": true },
+                { "title": "Triggered by",  "value": "${{ github.actor }}",      "short": true },
+                { "title": "View Run",      "value": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}", "short": false }
+              ]
+            }]
+          }
+
+    - name: Notify Slack — Failure
+      if: failure()
+      uses: slackapi/slack-github-action@v1.26.0
+      with:
+        webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+        webhook-type: incoming-webhook
+        payload: |
+          {
+            "text": "❌ *BDD Tests Failed!*",
+            "attachments": [{
+              "color": "danger",
+              "fields": [
+                { "title": "Branch",       "value": "${{ github.ref_name }}",   "short": true },
+                { "title": "Triggered by", "value": "${{ github.actor }}",      "short": true },
+                { "title": "View Logs",    "value": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}", "short": false }
+              ]
+            }]
+          }
