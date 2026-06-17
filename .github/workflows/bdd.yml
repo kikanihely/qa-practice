@@ -4,7 +4,10 @@ on:
     branches: [ bdd-automation ]
   pull_request:
     branches: [ bdd-automation ]
-  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1-5'        # runs every weekday at 9:00 AM UTC
+  workflow_dispatch:               # manual trigger from GitHub UI
+
 jobs:
   test:
     timeout-minutes: 60
@@ -14,12 +17,16 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
     - name: Run BDD Tests
       run: npx cucumber-js --profile login
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
@@ -39,10 +46,44 @@ jobs:
             "attachments": [{
               "color": "good",
               "fields": [
-                { "title": "Branch",       "value": "${{ github.ref_name }}", "short": true },
-                { "title": "Triggered by", "value": "${{ github.actor }}",    "short": true },
-                { "title": "View Run",     "value": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}", "short": false }
-              ]
+                {
+                  "title": "📁 Repository",
+                  "value": "<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>",
+                  "short": true
+                },
+                {
+                  "title": "🌿 Branch",
+                  "value": "${{ github.ref_name }}",
+                  "short": true
+                },
+                {
+                  "title": "👤 Triggered by",
+                  "value": "${{ github.actor }}",
+                  "short": true
+                },
+                {
+                  "title": "⚡ Trigger type",
+                  "value": "${{ github.event_name }}",
+                  "short": true
+                },
+                {
+                  "title": "🔖 Commit SHA",
+                  "value": "<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>",
+                  "short": false
+                },
+                {
+                  "title": "💬 Commit Message",
+                  "value": "${{ github.event.head_commit.message }}",
+                  "short": false
+                },
+                {
+                  "title": "🔗 View GitHub Actions Run",
+                  "value": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here to view run>",
+                  "short": false
+                }
+              ],
+              "footer": "GitHub Actions | BDD Automation",
+              "ts": "${{ github.event.head_commit.timestamp }}"
             }]
           }
 
@@ -58,9 +99,43 @@ jobs:
             "attachments": [{
               "color": "danger",
               "fields": [
-                { "title": "Branch",       "value": "${{ github.ref_name }}", "short": true },
-                { "title": "Triggered by", "value": "${{ github.actor }}",    "short": true },
-                { "title": "View Logs",    "value": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}", "short": false }
-              ]
+                {
+                  "title": "📁 Repository",
+                  "value": "<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>",
+                  "short": true
+                },
+                {
+                  "title": "🌿 Branch",
+                  "value": "${{ github.ref_name }}",
+                  "short": true
+                },
+                {
+                  "title": "👤 Triggered by",
+                  "value": "${{ github.actor }}",
+                  "short": true
+                },
+                {
+                  "title": "⚡ Trigger type",
+                  "value": "${{ github.event_name }}",
+                  "short": true
+                },
+                {
+                  "title": "🔖 Commit SHA",
+                  "value": "<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>",
+                  "short": false
+                },
+                {
+                  "title": "💬 Commit Message",
+                  "value": "${{ github.event.head_commit.message }}",
+                  "short": false
+                },
+                {
+                  "title": "🔗 View Failure Logs",
+                  "value": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here to view logs>",
+                  "short": false
+                }
+              ],
+              "footer": "GitHub Actions | BDD Automation",
+              "ts": "${{ github.event.head_commit.timestamp }}"
             }]
           }
