@@ -1,0 +1,5 @@
+{
+  success: true,
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxOTg3LCJlbWFpbCI6ImhlbHlAZGVtby5jb20iLCJpYXQiOjE3ODM1OTI3NjMsImV4cCI6MTc4NDE5NzU2M30.0EirAEeFndXWjuwxYbUTo8XlY-09USAWo1huGi_V334',
+  user: { id: 21987, email: 'hely@demo.com' }
+}

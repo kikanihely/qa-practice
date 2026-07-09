@@ -2,7 +2,7 @@ import { test, expect, request } from '@playwright/test';
 
 test('User creation with valid credentials', async ({ request }) => {
     const requestData = {
-        "email": "hely@simform.com",
+        "email": "hely@demo.com",
         "password": "hely@123"
     }
     const requestHeaders = {

@@ -1,0 +1,40 @@
+{
+  success: true,
+  data: [
+    {
+      id: 1,
+      title: 'World Tech Summit',
+      description: 'A premier technology conference bringing together 500+ industry leaders, startup founders, and engineers for two days of keynotes, workshops, and networking. Topics include AI/ML, cloud infrastructure, DevSecOps, and the future of the Indian tech ecosystem.',
+      category: 'Conference',
+      venue: 'Hyderabad, Hitech city',
+      city: 'Hyderabad',
+      eventDate: '2026-04-18T09:00:00.000Z',
+      price: '1500',
+      totalSeats: 500,
+      availableSeats: 0,
+      imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800',
+      isStatic: true,
+      userId: null,
+      createdAt: '2026-02-22T23:03:37.659Z',
+      updatedAt: '2026-05-23T06:57:02.677Z'
+    },
+    {
+      id: 73214,
+      title: 'AI & Machine Learning Summit - Updated',
+      description: 'Deep dive into LLMs, RAG, and agentic AI systems.',
+      category: 'Conference',
+      venue: 'Hyderabad International Convention Centre',
+      city: 'Hyderabad',
+      eventDate: '2026-09-20T10:00:00.000Z',
+      price: '2500',
+      totalSeats: 4000,
+      availableSeats: 300,
+      imageUrl: 'https://example.com/ai-summit-banner.jpg',
+      isStatic: false,
+      userId: 21206,
+      createdAt: '2026-07-09T10:24:37.113Z',
+      updatedAt: '2026-07-09T10:24:37.622Z'
+    }
+  ],
+  pagination: { total: 2, page: 1, limit: 10, totalPages: 1 }
+}
